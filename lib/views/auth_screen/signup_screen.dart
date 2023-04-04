@@ -1,13 +1,19 @@
 import 'package:flutter_firebase_ecommerce/consts/consts.dart';
-import 'package:flutter_firebase_ecommerce/consts/lists.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/applogo_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/bg_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/custom_textfield.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/our_button.dart';
 import 'package:get/get.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  bool? isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +41,14 @@ class SignupScreen extends StatelessWidget {
               Row(
                 children: [
                   Checkbox(
-                      checkColor: redColor,
-                      value: false,
-                      onChanged: (newValue) {}),
+                      activeColor: redColor,
+                      checkColor: whiteColor,
+                      value: isCheck,
+                      onChanged: (newValue) {
+                        setState(() {
+                          isCheck = newValue;
+                        });
+                      }),
                   10.widthBox,
                   Expanded(
                     child: RichText(
@@ -45,20 +56,20 @@ class SignupScreen extends StatelessWidget {
                       children: [
                         TextSpan(
                             text: "I agree to the ",
-                            style:
-                                TextStyle(fontFamily: bold, color: fontGrey)),
+                            style: TextStyle(
+                                fontFamily: regular, color: fontGrey)),
                         TextSpan(
                             text: termAndCond,
-                            style:
-                                TextStyle(fontFamily: bold, color: redColor)),
+                            style: TextStyle(
+                                fontFamily: regular, color: redColor)),
                         TextSpan(
                             text: " & ",
-                            style:
-                                TextStyle(fontFamily: bold, color: fontGrey)),
+                            style: TextStyle(
+                                fontFamily: regular, color: fontGrey)),
                         TextSpan(
                             text: privacyPolicy,
-                            style:
-                                TextStyle(fontFamily: bold, color: redColor)),
+                            style: TextStyle(
+                                fontFamily: regular, color: redColor)),
                       ],
                     )),
                   )
@@ -66,7 +77,7 @@ class SignupScreen extends StatelessWidget {
               ),
               5.heightBox,
               ourButton(
-                      color: redColor,
+                      color: isCheck == true ? redColor : lightGrey,
                       title: signup,
                       textColor: whiteColor,
                       onPress: () {})
@@ -75,19 +86,15 @@ class SignupScreen extends StatelessWidget {
                   .make(),
               10.heightBox,
               //wrapping into festure detector of velocity X
-              RichText(
-                  text: const TextSpan(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextSpan(
-                      text: alreadyHaveAccount,
-                      style: TextStyle(fontFamily: bold, color: fontGrey)),
-                  TextSpan(
-                      text: login,
-                      style: TextStyle(fontFamily: bold, color: redColor)),
+                  alreadyHaveAccount.text.color(fontGrey).make(),
+                  login.text.color(redColor).make().onTap(() {
+                    Get.back();
+                  })
                 ],
-              )).onTap(() {
-                Get.back();
-              })
+              )
             ],
           )
               .box

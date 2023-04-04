@@ -1,6 +1,7 @@
 import 'package:flutter_firebase_ecommerce/consts/consts.dart';
 import 'package:flutter_firebase_ecommerce/consts/lists.dart';
 import 'package:flutter_firebase_ecommerce/views/auth_screen/signup_screen.dart';
+import 'package:flutter_firebase_ecommerce/views/home_screen/home_screen.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/applogo_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/bg_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets_common/custom_textfield.dart';
@@ -36,13 +37,12 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {}, child: forgetPass.text.make())),
               5.heightBox,
               ourButton(
-                      color: redColor,
-                      title: login,
-                      textColor: whiteColor,
-                      onPress: () {})
-                  .box
-                  .width(context.screenWidth - 50)
-                  .make(),
+                  color: redColor,
+                  title: login,
+                  textColor: whiteColor,
+                  onPress: () {
+                    Get.to(() => const HomeScreen());
+                  }).box.width(context.screenWidth - 50).make(),
               5.heightBox,
               createNewAccount.text.color(fontGrey).make(),
               5.heightBox,
