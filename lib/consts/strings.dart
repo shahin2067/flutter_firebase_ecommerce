@@ -22,3 +22,21 @@ const home = "Home",
     categories = "Categories",
     cart = "Cart",
     account = "Account";
+
+// home screen strings
+const searchanything = "Search anything...",
+    todayDeal = "Today's deal",
+    flashsale = "Flash Sale",
+    topSellers = "Top Sellers",
+    brand = "Brand",
+    topCategories = "Top Categories",
+    featuredCategories = "Featured Categories",
+    womenDress = "Women Dress",
+    grilsDress = "Grils Dress",
+    girlsWatches = "Girl Watches",
+    mobilePhone = "Mobile Phone",
+    tShirts = "TShirts",
+    boysGlasses = "Boys Glasses",
+    girslDress = "Girls Dresses",
+    featureProduct = "Feature Product",
+    featureCategories = "Feature Categories";
